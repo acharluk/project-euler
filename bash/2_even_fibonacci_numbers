@@ -1,0 +1,17 @@
+#!/bin/bash
+
+term1=1
+term2=2
+sum=0
+
+while [[ $term2 < 4000000 ]]; do
+    if [[ $(( $term2 % 2 )) = 0 ]]; then
+        sum=$(( $sum + $term2 ))
+    fi
+
+    tmp=$term2
+    term2=$(( $term2 + $term1 ))
+    term1=$tmp
+done
+
+echo $sum
