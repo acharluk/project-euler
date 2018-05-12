@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function check_palindrome {
+    reversed=$(echo "$1" | rev)
+    [[ $1 = $reversed ]] && echo true || echo false
+}
+
+largest=0
+
+for ((i = 100; i < 1000; i++)); do
+    for ((j = i; j < 1000; j++)); do
+        result=$(( i * j ))
+        if [ $(check_palindrome $result) = true ]; then
+            if [ $result -gt $largest ]; then
+                largest=$result
+                echo "New largest: $largest"
+            fi
+        fi
+    done
+done
+
+echo $largest
